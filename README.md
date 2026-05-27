@@ -52,3 +52,15 @@ Possui as funcionalidades de:
 
 ![Tela menu principal](recursos/tela_principal.png)
 
+---
+### Tela Cadastro
+Tela de cadastro de remédios. Solicta os campos:
+
+- ID: código único do remédio. A rotina certifica-se de não existir um ID já cadastrado no banco de dados;
+- Nome: string com o nome do remédio;
+- Laboratório: string com o nome do laboratório fabricante do remédio;
+- Preço: float com o preço unitário do remédio;
+- Quantidade: inteiro com a quantidade em estoque do remédio;
+
+![Tela cadastro](recursos/tela_cadastro.png)
+

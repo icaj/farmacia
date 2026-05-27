@@ -6,7 +6,7 @@ O programa utiliza a biblioteca ncurses/PDCurses, que é uma biblioteca clássic
 
 Os dados são persistidos no arquivo <b>usuarios.dat</b> (para os usuários do sistema) e <b>remedios.dat</b> (para o cadastro de remédios da farmácia).
 
--
+---
 ### Login
 O programa possui 2 usuários padrão cadastrados:
 

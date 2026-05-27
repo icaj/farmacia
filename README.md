@@ -18,7 +18,7 @@ O programa possui 2 usuários padrão cadastrados:
 
 |Usuario | Senha |
 |--------|-------|
-! admin  | 123   |
+| admin  | 123   |
 | ivo    | 123   |
-|--------|-------|
+
 

@@ -84,13 +84,21 @@ void iniciarCores() {
         start_color();
         use_default_colors();
 
+        // definição da cor azul para o título
         init_pair(COR_TITULO,   COLOR_WHITE,  COLOR_BLUE);
+        // definição da cor ciano para os menus e mensagens informativas
         init_pair(COR_MENU,     COLOR_CYAN,   -1);
+        // definição da cor amarela para os rótulos dos campos de entrada
         init_pair(COR_CAMPO,    COLOR_YELLOW, -1);
+        // definição da cor verde para mensagens de sucesso
         init_pair(COR_SUCESSO,  COLOR_GREEN,  -1);
+        // definição da cor vermelha para mensagens de erro
         init_pair(COR_ERRO,     COLOR_RED,    -1);
+        // definição da cor ciano para o rodapé com instruções de navegação
         init_pair(COR_RODAPE,   COLOR_BLACK,  COLOR_CYAN);
+        // definição da cor branca para as bordas e caixas de texto
         init_pair(COR_CAIXA,    COLOR_WHITE,  -1);
+        // definição da cor amarela para destacar campos ou informações importantes
         init_pair(COR_DESTAQUE, COLOR_BLACK,  COLOR_YELLOW);
     }
 }
@@ -773,9 +781,13 @@ void salvarTudo() {
     salvarFila();
 }
 
+// Carrega os dados salvos anteriormente para a lista de remédios, lixeira e fila
 void carregarTudo() {
+    // Carrega os dados salvos anteriormente para a lista de remédios
     carregarListaArquivo(ARQ_REMEDIOS, &lista);
+    // Carrega os dados salvos anteriormente para a lixeira
     carregarListaArquivo(ARQ_LIXEIRA, &pilhaLixeira);
+    // Carrega os dados salvos anteriormente para a fila
     carregarFila();
 }
 
@@ -836,66 +848,94 @@ int menuPrincipal() {
 int main() {
     int opcao;
 
+    // inicializa a biblioteca curses e configurações iniciais da tela
     initscr();
+
+    // Configurações para melhor experiência em modo texto
     cbreak();
+
+    // Desativa o echo para não mostrar os caracteres digitados, especialmente útil para senhas
     noecho();
+
+    // Habilita o uso de teclas especiais como setas, F1-F12, etc.
     keypad(stdscr, TRUE);
+
+    // Esconde o cursor para uma interface mais limpa
     curs_set(0);
 
+    // Inicializa as cores para as diferentes partes da interface
     iniciarCores();
 
+    // Garante que existam usuários padrão para o login do sistema
     criarUsuariosPadrao();
 
+    // Exibe a tela de login e verifica as credenciais do usuário
     if (!telaLogin()) {
         desenharTelaBase("LOGIN DO SISTEMA");
         mensagemErro("Usuario ou senha invalidos.");
+        // Encerra a biblioteca curses e retorna ao terminal
         endwin();
         return 0;
     }
 
+    // Carrega os dados salvos anteriormente para a lista de remédios, lixeira e fila
     carregarTudo();
 
     do {
+        // Exibe o menu principal e aguarda a escolha do usuário
         opcao = menuPrincipal();
 
         switch (opcao) {
             case 1:
+                // Chama a função para cadastrar um novo remédio
                 cadastrarRemedio();
                 break;
             case 2:
+                // Chama a função para listar os remédios cadastrados
                 listarRemedios(lista, "LISTAGEM DE REMEDIOS");
                 break;
             case 3:
+                // Chama a função para editar um remédio existente
                 editarRemedio();
                 break;
             case 4:
+                // Chama a função para excluir um remédio, movendo-o para a lixeira
                 excluirRemedio();
                 break;
             case 5:
+                // Chama a função para desfazer a última exclusão, restaurando o remédio da lixeira para a lista principal
                 desfazerExclusao();
                 break;
             case 6:
+                // Chama a função para pesquisar remédios por nome, exibindo os resultados encontrados
                 pesquisarPorNome();
                 break;
             case 7:
+                // Chama a função para ordenar os remédios por nome e exibir a lista ordenada
                 ordenarPorNome();
                 break;
             case 8:
+                // Chama a função para realizar uma busca binária por ID, exibindo os detalhes do remédio encontrado
                 buscaBinariaPorId();
                 break;
             case 9:
+                // Chama a função para adicionar um item na fila de pendentes, verificando se o ID do remédio existe na lista principal
                 adicionarFila();
                 break;
             case 10:
+                // Chama a função para remover o item mais antigo da fila, exibindo o ID do remédio removido
                 removerFila();
                 break;
             case 11:
+                // Chama a função para listar os itens atualmente na fila de pendentes, mostrando a posição e o ID do remédio
                 listarFila();
                 break;
             case 12:
+                // Chama a função para listar os remédios que estão na lixeira, permitindo visualizar os itens excluídos recentemente
                 listarRemedios(pilhaLixeira, "LIXEIRA DE REMEDIOS");
                 break;
             case 0:
+                // Chama a função para salvar todos os dados atuais (lista de remédios, lixeira e fila) em arquivos antes de sair do programa
                 salvarTudo();
                 break;
             default:
@@ -904,10 +944,14 @@ int main() {
 
     } while (opcao != 0);
 
+    // Libera a memória alocada para a lista de remédios
     liberarLista(lista);
+    // Libera a memória alocada para a lixeira
     liberarLista(pilhaLixeira);
+    // Libera a memória alocada para a fila de pendentes
     liberarFila();
 
+    // Encerra a biblioteca curses e retorna ao terminal
     endwin();
 
     printf("Dados salvos com sucesso.\n");

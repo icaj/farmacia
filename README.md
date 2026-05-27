@@ -21,4 +21,4 @@ O programa possui 2 usuários padrão cadastrados:
 | admin  | 123   |
 | ivo    | 123   |
 
-
+![Exemplo de imagem PNG](tela_login.png)

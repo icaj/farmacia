@@ -35,7 +35,7 @@ O programa possui um controle de usuários básico. O programa possui 2 usuário
 
 No momento ambos usuários tem permissão para acessar todas as funcionalidades do sistema.
 
-![Tela de login inicial](tela_login.png)
+![Tela de login inicial](recursos/tela_login.png)
 
 ---
 ### Menu Principal
@@ -50,5 +50,5 @@ Possui as funcionalidades de:
 - Pesquisar por nome
 - Listar lixeira
 
-![Tela menu principal](tela_principal.png)
+![Tela menu principal](recursos/tela_principal.png)
 

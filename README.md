@@ -77,3 +77,11 @@ Exibe
 
 ![Tela listagem](recursos/tela_listar.png)
 
+---
+### Tela Editar Cadastro
+Tela de edição do cadastro de remédios.
+
+Solicita o ID do remédio, localiza o remédio na lista e permite a alteraçaõ dos dados.
+
+![Tela edicao](recursos/tela_editar.png)
+

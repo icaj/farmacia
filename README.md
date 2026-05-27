@@ -14,7 +14,7 @@ O programa possui 2 usuários padrão cadastrados:
 | admin  | 123   |
 | ivo    | 123   |
 
-![Tela de login inicial](tela_login.png)
+
 
 ### Menu Principal
 Possui as funcionalidades de:

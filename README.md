@@ -1,4 +1,4 @@
-# farmacia
+# Farmacia
 Programa de Didático de Cadastro de Remédios em C
 
 ## Descrição

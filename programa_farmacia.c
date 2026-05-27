@@ -42,11 +42,13 @@
 #define COR_CAIXA      7
 #define COR_DESTAQUE   8
 
+// estrutura de dados para os usuários do sistema
 typedef struct {
     char usuario[30];
     char senha[30];
 } Usuario;
 
+// estrutura de dados para os remédios, formando uma lista encadeada
 typedef struct Remedio {
     int id;
     char nome[80];
@@ -56,6 +58,7 @@ typedef struct Remedio {
     struct Remedio *prox;
 } Remedio;
 
+// estrutura de dados para os nós da fila de pendentes
 typedef struct FilaNo {
     int idRemedio;
     struct FilaNo *prox;
@@ -68,7 +71,7 @@ Usuario usuarioLogado;
 FilaNo *inicioFila = NULL;
 FilaNo *fimFila = NULL;
 
-// Funçoes de tela
+// função para exibir uma mensagem e aguardar o usuário pressionar uma tecla para continuar
 void pausar() {
     attron(COLOR_PAIR(COR_RODAPE));
     mvhline(LINES - 2, 1, ' ', COLS - 2);
@@ -104,7 +107,6 @@ void iniciarCores() {
 }
 
 // Tela base do sistema
-
 void desenharTelaBase(const char *titulo) {
     clear();
 
@@ -177,7 +179,6 @@ float lerFloat(int linha, int coluna) {
 }
 
 // Login no sistema
-
 void criarUsuariosPadrao() {
     FILE *f = fopen(ARQ_USUARIOS, "rb");
 
@@ -241,6 +242,8 @@ int telaLogin() {
 
 // Funções de lista encadeada
 
+// Cria um novo nó para a lista encadeada a partir dos dados de um remédio
+// alocando memória dinamicamente e inicializando os campos
 Remedio *criarNo(Remedio r) {
     Remedio *novo = (Remedio *) malloc(sizeof(Remedio));
 
@@ -255,6 +258,7 @@ Remedio *criarNo(Remedio r) {
     return novo;
 }
 
+// Insere um novo remédio no início da lista encadeada, atualizando o ponteiro da cabeça da lista
 void inserirInicio(Remedio **cabeca, Remedio *novo) {
     novo->prox = *cabeca;
     *cabeca = novo;
@@ -285,6 +289,8 @@ int contarRemedios(Remedio *cabeca) {
 
 // Funções de cadastro do sistema - CRUD
 
+// Função para cadastrar um novo remédio, solicitando os dados ao usuário 
+// e verificando se o ID já existe na lista principal antes de inserir
 void cadastrarRemedio() {
     Remedio r;
 
@@ -310,6 +316,7 @@ void cadastrarRemedio() {
     imprimirCampo(8, 5, "Quantidade: ");
     r.quantidade = lerInteiro(8, 25);
 
+    // Insere o novo remédio no início da lista encadeada
     inserirInicio(&lista, criarNo(r));
 
     mensagemSucesso("Remedio cadastrado com sucesso.");

@@ -92,3 +92,11 @@ Tela de exclusão de itens do cadastro de remédios.
 Solicita o ID do remédio, localiza o remédio na lista e permite a exclusão dos dados.
 
 ![Tela exclusao](recursos/tela_exclusao.png)
+
+---
+### Tela Desfazer Ultima Exclusão
+Tela que permite desfazer a última exclusão de um item do cadastro de remédios.
+
+Solicita o ID do remédio, localiza na lista da lixeira e permite a exclusão dos dados.
+
+![Tela desfazer exclusao](recursos/tela_desfazer_exclusao.png)

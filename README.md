@@ -85,3 +85,10 @@ Solicita o ID do remédio, localiza o remédio na lista e permite a alteraçaõ 
 
 ![Tela edicao](recursos/tela_editar.png)
 
+---
+### Tela de Exclusão de Remédio
+Tela de exclusão de itens do cadastro de remédios.
+
+Solicita o ID do remédio, localiza o remédio na lista e permite a exclusão dos dados.
+
+![Tela exclusao](recursos/tela_excluir.png)

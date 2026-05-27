@@ -1,6 +1,24 @@
 # Farmacia
 Programa Didático de Cadastro de Remédios em C
 
+    Recursos implementados:
+    - Login com usuarios persistidos em arquivo
+    - Cadastro principal usando Lista Encadeada
+    - CRUD de remedios
+    - Pesquisa sequencial por nome
+    - Ordenacao por nome usando qsort sobre vetor de ponteiros
+    - Busca binaria por ID usando vetor temporario ordenado
+    - Lixeira usando Pilha
+    - Fila de itens pendentes
+    - Persistencia em arquivos binarios
+    - Telas coloridas em modo texto com curses
+
+    Compilacao Linux:
+        gcc main.c -o farmacia -lncurses
+
+    Compilacao Windows com PDCurses:
+        gcc main.c -o farmacia.exe -lpdcurses
+        
 ## Descrição
 O programa utiliza a biblioteca ncurses/PDCurses, que é uma biblioteca clássica para criação de telas, menus e janelas coloridas em modo texto na linguagem C, para criação de um programa de cadastro de remédio de uma farmácia.
 

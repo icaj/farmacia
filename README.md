@@ -15,7 +15,7 @@ O programa possui um controle de usuários básico. O programa possui 2 usuário
 | admin  | 123   |
 | ivo    | 123   |
 
-No momento ambos usuarios tem permissão para acessar todas as funcionalidades do sistema.
+No momento ambos usuários tem permissão para acessar todas as funcionalidades do sistema.
 
 ![Tela de login inicial](tela_login.png)
 

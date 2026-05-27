@@ -91,4 +91,4 @@ Tela de exclusão de itens do cadastro de remédios.
 
 Solicita o ID do remédio, localiza o remédio na lista e permite a exclusão dos dados.
 
-![Tela exclusao](recursos/tela_excluir.png)
+![Tela exclusao](recursos/tela_exclusao.png)

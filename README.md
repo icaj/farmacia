@@ -13,4 +13,12 @@ Possui as funcionalidades de:
 - Pesquisar por nome
 - Listar lixeira
 
+### Login
+O programa possui 2 usuários padrão cadastrados:
+
+|Usuario | Senha |
+|--------|-------|
+! admin  | 123   |
+| ivo    | 123   |
+|--------|-------|
 

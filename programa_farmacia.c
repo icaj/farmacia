@@ -68,10 +68,7 @@ Usuario usuarioLogado;
 FilaNo *inicioFila = NULL;
 FilaNo *fimFila = NULL;
 
-/* ============================================================
-   FUNCOES DE TELA
-   ============================================================ */
-
+// Funçoes de tela
 void pausar() {
     attron(COLOR_PAIR(COR_RODAPE));
     mvhline(LINES - 2, 1, ' ', COLS - 2);
@@ -81,6 +78,7 @@ void pausar() {
     getch();
 }
 
+// Definição das cores padrão usadas no sistema
 void iniciarCores() {
     if (has_colors()) {
         start_color();
@@ -96,6 +94,8 @@ void iniciarCores() {
         init_pair(COR_DESTAQUE, COLOR_BLACK,  COLOR_YELLOW);
     }
 }
+
+// Tela base do sistema
 
 void desenharTelaBase(const char *titulo) {
     clear();
@@ -168,9 +168,7 @@ float lerFloat(int linha, int coluna) {
     return valor;
 }
 
-/* ============================================================
-   LOGIN
-   ============================================================ */
+// Login no sistema
 
 void criarUsuariosPadrao() {
     FILE *f = fopen(ARQ_USUARIOS, "rb");
@@ -233,9 +231,7 @@ int telaLogin() {
     return 0;
 }
 
-/* ============================================================
-   LISTA ENCADEADA
-   ============================================================ */
+// Funções de lista encadeada
 
 Remedio *criarNo(Remedio r) {
     Remedio *novo = (Remedio *) malloc(sizeof(Remedio));
@@ -279,9 +275,7 @@ int contarRemedios(Remedio *cabeca) {
     return qtd;
 }
 
-/* ============================================================
-   CRUD
-   ============================================================ */
+// Funções de cadastro do sistema - CRUD
 
 void cadastrarRemedio() {
     Remedio r;
@@ -441,9 +435,7 @@ void desfazerExclusao() {
     mensagemSucesso("Ultima exclusao desfeita com sucesso.");
 }
 
-/* ============================================================
-   PESQUISA, ORDENACAO E BUSCA BINARIA
-   ============================================================ */
+// Pesquisa, ordenação e busca binária 
 
 void pesquisarPorNome() {
     char nome[80];
@@ -609,9 +601,7 @@ void buscaBinariaPorId() {
     pausar();
 }
 
-/* ============================================================
-   FILA
-   ============================================================ */
+// Funções para implementação da fila
 
 void adicionarFila() {
     int id;
@@ -696,9 +686,7 @@ void listarFila() {
     pausar();
 }
 
-/* ============================================================
-   PERSISTENCIA
-   ============================================================ */
+// Funções para persistência de dados em arquivos //
 
 void salvarListaArquivo(const char *nomeArquivo, Remedio *cabeca) {
     FILE *f = fopen(nomeArquivo, "wb");
@@ -791,10 +779,7 @@ void carregarTudo() {
     carregarFila();
 }
 
-/* ============================================================
-   LIBERACAO DE MEMORIA
-   ============================================================ */
-
+// Liberação de memória
 void liberarLista(Remedio *cabeca) {
     Remedio *aux;
 
@@ -817,10 +802,7 @@ void liberarFila() {
     fimFila = NULL;
 }
 
-/* ============================================================
-   MENU
-   ============================================================ */
-
+// Menu principal
 int menuPrincipal() {
     int opcao;
 
@@ -850,10 +832,7 @@ int menuPrincipal() {
     return opcao;
 }
 
-/* ============================================================
-   MAIN
-   ============================================================ */
-
+// Ponto de entrada do programa
 int main() {
     int opcao;
 

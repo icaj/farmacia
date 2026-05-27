@@ -27,3 +27,4 @@ Possui as funcionalidades de:
 - Listar lixeira
 
 ![Tela menu principal](tela_principal.png)
+

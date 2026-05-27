@@ -64,3 +64,16 @@ Tela de cadastro de remédios. Solicta os campos:
 
 ![Tela cadastro](recursos/tela_cadastro.png)
 
+---
+### Tela Listagem do Cadastro
+Tela de listagem do cadastro de remédios.
+
+Exibe
+- ID: código único do remédio;
+- Nome: string com o nome do remédio;
+- Laboratório: string com o nome do laboratório fabricante do remédio;
+- Preço: float com o preço unitário do remédio;
+- Quantidade: inteiro com a quantidade em estoque do remédio;
+
+![Tela listagem](recursos/tela_listar.png)
+

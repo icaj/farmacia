@@ -8,16 +8,21 @@ Os dados são persistidos no arquivo <b>usuarios.dat</b> (para os usuários do s
 
 ---
 ### Login
-O programa possui 2 usuários padrão cadastrados:
+O programa possui um controle de usuários básico. O programa possui 2 usuários padrão cadastrados:
 
 |Usuario | Senha |
 |--------|-------|
 | admin  | 123   |
 | ivo    | 123   |
 
+No momento ambos usuarios tem permissão para acessar todas as funcionalidades do sistema.
+
 ![Tela de login inicial](tela_login.png)
 
+---
 ### Menu Principal
+Tela principal do sistema onde o usuário possui acesso a todas as funcionalidades.
+
 Possui as funcionalidades de:
 - Cadastrar remédio
 - Listar remédios

@@ -127,12 +127,14 @@ void desenharTelaBase(const char *titulo) {
     refresh();
 }
 
+// imprime uma string para um campo de entrada em uma posição específica da tela, usando uma cor e estilo definidos
 void imprimirCampo(int linha, int coluna, const char *label) {
     attron(COLOR_PAIR(COR_CAMPO) | A_BOLD);
     mvprintw(linha, coluna, "%s", label);
     attroff(COLOR_PAIR(COR_CAMPO) | A_BOLD);
 }
 
+// imprime uma mensagem de sucesso o na parte inferior da tela, e aguarda o usuário pressionar uma
 void mensagemSucesso(const char *msg) {
     attron(COLOR_PAIR(COR_SUCESSO) | A_BOLD);
     mvprintw(LINES - 4, 3, "%s", msg);
@@ -798,7 +800,8 @@ void carregarTudo() {
     carregarFila();
 }
 
-// Liberação de memória
+// Libera a memória alocada para cada registro armazenado na lista encadeada de remédios
+// percorrendo a lista e liberando cada nó individualmente
 void liberarLista(Remedio *cabeca) {
     Remedio *aux;
 
@@ -809,6 +812,8 @@ void liberarLista(Remedio *cabeca) {
     }
 }
 
+// Libera a memória alocada para cada registro armazenado na fila
+// percorrendo a fila e liberando cada nó individualmente
 void liberarFila() {
     FilaNo *aux;
 

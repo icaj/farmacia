@@ -2,7 +2,7 @@
 Programa Didático de Cadastro de Remédios em C
 
 ## Descrição
-O programa utiliza a biblioteca ncurses/PDCurses, que é uma biblioteca clássica para criação de telas, menus e janelas em modo texto na linguagem C, para criação de um programa de cadastro de remédio de uma farmácia.
+O programa utiliza a biblioteca ncurses/PDCurses, que é uma biblioteca clássica para criação de telas, menus e janelas coloridas em modo texto na linguagem C, para criação de um programa de cadastro de remédio de uma farmácia.
 
 Os dados são persistidos no arquivo <b>usuarios.dat</b> (para os usuários do sistema) e <b>remedios.dat</b> (para o cadastro de remédios da farmácia).
 

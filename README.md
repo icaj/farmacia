@@ -11,7 +11,7 @@ Programa Didático de Cadastro de Remédios em C
     - Lixeira usando Pilha
     - Fila de itens pendentes
     - Persistencia em arquivos binarios
-    - Telas coloridas em modo texto com curses
+    - Telas coloridas em modo texto com curses.
 
     Compilacao Linux:
         gcc main.c -o farmacia -lncurses

@@ -63,6 +63,7 @@ FilaNo *fimFila = NULL;
 
 // função para exibir uma mensagem e aguardar o usuário pressionar uma tecla para continuar
 void pausar() {
+    // muda a cor do texto
     attron(COLOR_PAIR(COR_RODAPE));
     mvhline(LINES - 2, 1, ' ', COLS - 2);
     mvprintw(LINES - 2, 3, " Pressione qualquer tecla para continuar ");
@@ -132,6 +133,7 @@ void mensagemSucesso(const char *msg) {
     pausar();
 }
 
+// imprime mensagem de erro formatada
 void mensagemErro(const char *msg) {
     attron(COLOR_PAIR(COR_ERRO) | A_BOLD);
     mvprintw(LINES - 4, 3, "%s", msg);
@@ -139,6 +141,7 @@ void mensagemErro(const char *msg) {
     pausar();
 }
 
+// le string do teclado
 void lerString(int linha, int coluna, char *destino, int tamanho) {
     echo();
     curs_set(1);
@@ -148,6 +151,7 @@ void lerString(int linha, int coluna, char *destino, int tamanho) {
     curs_set(0);
 }
 
+// le inteiro do teclado
 int lerInteiro(int linha, int coluna) {
     int valor;
     echo();
@@ -159,6 +163,7 @@ int lerInteiro(int linha, int coluna) {
     return valor;
 }
 
+// le float do teclado 
 float lerFloat(int linha, int coluna) {
     float valor;
     echo();
@@ -192,6 +197,8 @@ void criarUsuariosPadrao() {
     }
 }
 
+
+// exibe tela de login
 int telaLogin() {
     Usuario u;
     char usuario[30];
@@ -237,25 +244,33 @@ int telaLogin() {
 // Cria um novo nó para a lista encadeada a partir dos dados de um remédio
 // alocando memória dinamicamente e inicializando os campos
 Remedio *criarNo(Remedio r) {
+    // aloca memoria para o registro passado
     Remedio *novo = (Remedio *) malloc(sizeof(Remedio));
 
+    // exibe erro se não foi possivel alocar mmemoria
     if (novo == NULL) {
         endwin();
         printf("Erro de memoria.\n");
         exit(1);
     }
 
+    // salva registro na memoria
     *novo = r;
+    // define nulo para o endereço para o próximo item 
     novo->prox = NULL;
+    // retorna ponteiro de memoria alocado
     return novo;
 }
 
 // Insere um novo remédio no início da lista encadeada, atualizando o ponteiro da cabeça da lista
 void inserirInicio(Remedio **cabeca, Remedio *novo) {
+    // define no item a ser inserido o endereço do primeiro item da lista
     novo->prox = *cabeca;
+    // define como primeiro item da lista o novo item
     *cabeca = novo;
 }
 
+// busca remedio por ID
 Remedio *buscarPorId(Remedio *cabeca, int id) {
     while (cabeca != NULL) {
         if (cabeca->id == id) {
@@ -608,7 +623,12 @@ void buscaBinariaPorId() {
     pausar();
 }
 
+//////////////////////////////////////////
+//
 // Funções para implementação da fila
+//
+//////////////////////////////////////////
+
 
 void adicionarFila() {
     int id;
@@ -668,6 +688,7 @@ void removerFila() {
     pausar();
 }
 
+// lista itens da fila
 void listarFila() {
     FilaNo *atual = inicioFila;
     int linha = 5;
@@ -693,8 +714,13 @@ void listarFila() {
     pausar();
 }
 
-// Funções para persistência de dados em arquivos //
+////////////////////////////////////////////////////
+//
+// Funções para persistência de dados em arquivos 
+//
+////////////////////////////////////////////////////
 
+// salva itens da lista especificada no arquivo indicado
 void salvarListaArquivo(const char *nomeArquivo, Remedio *cabeca) {
     FILE *f = fopen(nomeArquivo, "wb");
 
@@ -710,6 +736,7 @@ void salvarListaArquivo(const char *nomeArquivo, Remedio *cabeca) {
     fclose(f);
 }
 
+// carrega itens do arquivo indicado na lista indicada
 void carregarListaArquivo(const char *nomeArquivo, Remedio **cabeca) {
     FILE *f = fopen(nomeArquivo, "rb");
     Remedio temp;
@@ -726,6 +753,7 @@ void carregarListaArquivo(const char *nomeArquivo, Remedio **cabeca) {
     fclose(f);
 }
 
+// salva itens da fila em arquivo
 void salvarFila() {
     FILE *f = fopen(ARQ_FILA, "wb");
 
@@ -743,6 +771,7 @@ void salvarFila() {
     fclose(f);
 }
 
+// carrega itens do arquivo de fila na memoria
 void carregarFila() {
     FILE *f = fopen(ARQ_FILA, "rb");
     int id;
@@ -775,8 +804,11 @@ void carregarFila() {
 }
 
 void salvarTudo() {
+    // salva lista de remedios no arquivo
     salvarListaArquivo(ARQ_REMEDIOS, lista);
+    // salva lixeira em arquivo
     salvarListaArquivo(ARQ_LIXEIRA, pilhaLixeira);
+    // salvar fila em arquivo
     salvarFila();
 }
 

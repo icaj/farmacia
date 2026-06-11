@@ -13,10 +13,10 @@ Programa Didático de Cadastro de Remédios em C
     - Persistencia em arquivos binarios
     - Telas coloridas em modo texto com curses.
 
-    Compilacao Linux:
+    Compilacao no Linux:
         gcc main.c -o farmacia -lncurses
 
-    Compilacao Windows com PDCurses:
+    Compilacao no Windows com PDCurses:
         gcc main.c -o farmacia.exe -lpdcurses
         
 ## Descrição
@@ -31,7 +31,6 @@ O programa possui um controle de usuários básico. O programa possui 2 usuário
 |Usuario | Senha |
 |--------|-------|
 | admin  | 123   |
-| ivo    | 123   |
 
 No momento ambos usuários tem permissão para acessar todas as funcionalidades do sistema.
 

@@ -2,22 +2,10 @@
     Sistema de Cadastro de Remedios - Farmacia
     Linguagem C + ncurses/PDCurses
 
-    Recursos implementados:
-    - Login com usuarios persistidos em arquivo
-    - Cadastro principal usando Lista Encadeada
-    - CRUD de remedios
-    - Pesquisa sequencial por nome
-    - Ordenacao por nome usando qsort sobre vetor de ponteiros
-    - Busca binaria por ID usando vetor temporario ordenado
-    - Lixeira usando Pilha
-    - Fila de itens pendentes
-    - Persistencia em arquivos binarios
-    - Telas coloridas em modo texto com curses
-
-    Compilacao Linux:
+    Compilacao para Linux:
         gcc main.c -o farmacia -lncurses
 
-    Compilacao Windows com PDCurses:
+    Compilacao para Windows com PDCurses:
         gcc main.c -o farmacia.exe -lpdcurses
 */
 
@@ -64,10 +52,12 @@ typedef struct FilaNo {
     struct FilaNo *prox;
 } FilaNo;
 
+// estruturas de dados
 Remedio *lista = NULL;
 Remedio *pilhaLixeira = NULL;
 Usuario usuarioLogado;
 
+// variaveis de controle da fila de registros
 FilaNo *inicioFila = NULL;
 FilaNo *fimFila = NULL;
 
@@ -805,9 +795,13 @@ void carregarTudo() {
 void liberarLista(Remedio *cabeca) {
     Remedio *aux;
 
+    // loop de liberacao
     while (cabeca != NULL) {
+        // guarda pronteiro de memoria do inicio da lista
         aux = cabeca;
+        // define o inicio da fila para o próximo item
         cabeca = cabeca->prox;
+        // libera memoria alocada para o item do inicio
         free(aux);
     }
 }
@@ -817,12 +811,16 @@ void liberarLista(Remedio *cabeca) {
 void liberarFila() {
     FilaNo *aux;
 
+    // loop de liberação
     while (inicioFila != NULL) {
+        // guarda ponteiro de memoria alocada
         aux = inicioFila;
+        // muda o inicio da fila para o proximo item
         inicioFila = inicioFila->prox;
+        // libera memoria alocada par ao item
         free(aux);
     }
-
+    // define o fim da fila como nulo
     fimFila = NULL;
 }
 
@@ -832,8 +830,10 @@ int menuPrincipal() {
 
     desenharTelaBase("SISTEMA DE FARMACIA - MENU PRINCIPAL");
 
+    // ativar cor do menu
     attron(COLOR_PAIR(COR_MENU) | A_BOLD);
 
+    // escrever o menu
     mvprintw(4, 6,  "1  - Cadastrar remedio");
     mvprintw(5, 6,  "2  - Listar remedios");
     mvprintw(6, 6,  "3  - Editar remedio");
@@ -848,6 +848,7 @@ int menuPrincipal() {
     mvprintw(15, 6, "12 - Listar lixeira");
     mvprintw(16, 6, "0  - Salvar e sair");
 
+    // desativar a cor do menu
     attroff(COLOR_PAIR(COR_MENU) | A_BOLD);
 
     imprimirCampo(19, 6, "Escolha uma opcao: ");
